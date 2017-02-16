@@ -1,2 +1,67 @@
 # easy-cpp-profiler
-a simple header file based profiler for c++
+a simple header file based profiler for c++. still under development!
+
+# how to use?
+
+## to measure runtime:
+
+```c++
+...
+PROF_START(identifier, comment);
+...
+PROF_END(identifier);
+...
+```
+
+example:
+```c++
+PROF_START(calculatePow, "calculating pow");
+pow(12, 58);
+PROF_END(calculatePow);
+```
+if the runtime is bigger than 0.5 sec the output would be, e.g.:
+```
+PROFILER DURATION           calculating pow 0.7894 SECS
+```
+
+## to measure runtime in a loop and overall:
+
+```c++
+...
+PROF_START(identifier, comment);
+for (...) {
+  ...
+  PROF_LAP(identifier);
+}
+PROF_END(identifier);
+...
+```
+
+example:
+```c++
+PROF_START(calculatePow, "calculating pow");
+for (int i = 1; i < 58; i++) {
+  pow(i, 58);
+  POW_LAP(calculatePow);
+}
+PROF_END(calculatePow);
+```
+
+if the runtime is bigger than 0.5 sec per iteration or the overall runtime the output would be, e.g.:
+```
+PROFILER LAP DURATION       calculating pow 0.7894 SECS
+PROFILER DURATION           calculating pow 8.3529 SECS
+```
+
+## print debug information:
+
+during development it is often useful to print out the file, the function and the line of code where the current execution is.
+
+```c++
+PROF_DEBUG();
+```
+
+will print out, e.g.:
+```
+test.cpp : int main(int, char**) : 5
+```
