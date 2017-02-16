@@ -1,5 +1,5 @@
-#ifndef BADBIT_PROFILER_HPP_
-#define BADBIT_PROFILER_HPP_
+#ifndef __PROFILER_HPP_
+#define __PROFILER_HPP_
 
 #include <ctime>
 #include <ratio>
