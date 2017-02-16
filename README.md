@@ -53,6 +53,30 @@ PROFILER LAP DURATION       calculating pow 0.7894 SECS
 PROFILER DURATION           calculating pow 8.3529 SECS
 ```
 
+## profiling with custom threshold of seconds and not 0.5:
+
+this is very simple, just instead of
+
+```c++
+PROF_START(identifier, comment);
+```
+
+use
+
+```c++
+PROF_START_T(identifier, comment, threshold);
+```
+
+example
+
+```c++
+PROF_START_T(calculatePow, "calculating pow", 0.3);
+pow(12, 58);
+PROF_END(calculatePow);
+```
+
+now the threshold for the runtime is 0.3 seconds.
+
 ## print debug information:
 
 during development it is often useful to print out the file, the function and the line of code where the current execution is.
