@@ -6,14 +6,17 @@
 #include <chrono>
 #include <iostream>
 
-#define PROF_START(block, comment) \
-  std::chrono::high_resolution_clock::time_point __profilerBegin_##block = std::chrono::high_resolution_clock::now(); \
+#define PROF_START_T(block, comment, threshold) \
+   std::chrono::high_resolution_clock::time_point __profilerBegin_##block = std::chrono::high_resolution_clock::now(); \
   std::chrono::high_resolution_clock::time_point __profilerLapBegin_##block = std::chrono::high_resolution_clock::now(); \
   bool __profilerLapCalled_##block = false; \
   std::chrono::duration<double> __profilerLapDuration_##block; \
   std::ios __coutStateSaved_##block(nullptr); \
-  float __profilerThreshold_##block = 0.5; \
+  float __profilerThreshold_##block = threshold; \
   const char* __profilerMessage_##block = comment;
+
+#define PROF_START(block, comment) \
+  PROF_START_T(block, comment, 0.5);
 
 #define PROF_PRINT(block, string, width, value) \
   __coutStateSaved_##block.copyfmt(std::cout); \
