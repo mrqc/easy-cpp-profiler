@@ -42,7 +42,7 @@ example:
 PROF_START(calculatePow, "calculating pow");
 for (int i = 1; i < 58; i++) {
   pow(i, 58);
-  POW_LAP(calculatePow);
+  PROF_LAP(calculatePow);
 }
 PROF_END(calculatePow);
 ```
