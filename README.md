@@ -49,6 +49,9 @@ PROF_END(calculatePow);
 
 if the runtime is bigger than 0.5 sec per iteration or the overall runtime the output would be, e.g.:
 ```
+PROFILER LAP DURATION       calculating pow 0.693 SECS
+PROFILER LAP DURATION       calculating pow 0.7027 SECS
+...
 PROFILER LAP DURATION       calculating pow 0.7894 SECS
 PROFILER DURATION           calculating pow 8.3529 SECS
 ```
