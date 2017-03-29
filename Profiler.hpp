@@ -43,6 +43,6 @@
   }
 
 #define PROF_DEBUG() \
-  std::cout << __FILE__ << " : " << __PRETTY_FUNCTION__ << " : " << __LINE__ << std::endl;
+  std::cout << __FILE__ << " : " << __LINE__ << std::endl;
 
 #endif
