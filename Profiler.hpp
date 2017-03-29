@@ -5,6 +5,7 @@
 #include <ratio>
 #include <chrono>
 #include <iostream>
+#include <thread>
 
 #define PROF_START_T(block, comment, threshold) \
   std::chrono::high_resolution_clock::time_point __profilerBegin_##block = std::chrono::high_resolution_clock::now(); \
@@ -43,6 +44,6 @@
   }
 
 #define PROF_DEBUG() \
-  std::cout << __FILE__ << " : " << __LINE__ << std::endl;
+  std::cout << "(" << std::this_thread::get_id() << ") " << __FILE__ << " : " << __LINE__ << std::endl;
 
 #endif
