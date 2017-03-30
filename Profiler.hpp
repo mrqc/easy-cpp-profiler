@@ -44,6 +44,6 @@
   }
 
 #define PROF_DEBUG() \
-  std::cout << "(" << std::this_thread::get_id() << ") " << __FILE__ << " : " << __LINE__ << std::endl;
+  {}; //std::cout << "(" << std::this_thread::get_id() << ") " << __FILE__ << " : " << __LINE__ << std::endl;
 
 #endif
